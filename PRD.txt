@@ -1,0 +1,831 @@
+PRD (Product Requirements Document)
+Product: AI Portfolio Website — “Akhtar AI Twin”
+
+Version: 1.0 (MVP Spec)
+Author: Akhtar (Product) + ChatGPT (PRD)
+Status: Ready for Design Guide + Build
+Inspiration Reference: toukoum.fr
+Build Platform: Antigravity Vibe Coder
+
+1) Product Summary
+What are we building?
+
+A chat-first AI portfolio website for Akhtar that looks and feels like a premium interactive landing page. Visitors can:
+
+Ask questions in a chat box (“Ask me anything…”)
+
+Discover Akhtar via 4 clear sections:
+
+Me
+
+Projects
+
+Skills
+
+Contact
+
+Access “common questions” using a 3-dot menu (FAQ prompt launcher)
+
+Experience premium UI interactions:
+
+minimal clean theme
+
+liquid glass buttons
+
+smooth chat animation
+
+cursor fluid effect using SplashCursor component 
+
+splash cursor code
+
+The website should behave like an AI-powered personal assistant, not a generic portfolio.
+
+2) Problem Statement
+Why this product?
+
+Traditional portfolios have 3 issues:
+
+Visitors don’t read long text
+
+They want answers quickly (“what do you do?”, “projects?”, “contact?”)
+
+Most portfolios look the same → low memorability
+
+This AI portfolio solves it by:
+
+letting users ask directly instead of searching
+
+showing content in a guided interactive experience
+
+using “chat UI + clean glass design” for a premium feel
+
+3) Goals & Objectives
+Business / Career Goals
+
+Position Akhtar as a premium AI automation builder
+
+Attract:
+
+freelance clients
+
+agencies
+
+founders
+
+recruiters
+
+Generate contact conversions:
+
+email clicks
+
+social clicks
+
+direct call/WhatsApp (optional)
+
+Product Goals
+
+Create a portfolio that people remember (visual + interactive)
+
+Make it easy to understand Akhtar within 30 seconds
+
+4) Non-goals (Important scope control)
+
+To avoid wasting time in MVP:
+
+❌ No user login
+❌ No “save chats” accounts
+❌ No admin panel
+❌ No payment/subscriptions
+❌ No heavy database design
+❌ No multi-language
+❌ No blog engine
+❌ No complex long-term memory AI system
+
+MVP should feel premium without complexity.
+
+5) Success Metrics (MVP)
+Engagement
+
+Average time on site: > 90 seconds
+
+% visitors who interact with chat: > 40%
+
+Conversion
+
+Contact button clicks: > 5%
+
+Email clicked/copy: > 3%
+
+LinkedIn clicks: > 2%
+
+Experience Quality
+
+First load time: < 2s
+
+Mobile responsiveness: no layout breakpoints
+
+Chat response latency perceived: “fast” (show typing/loading)
+
+6) Target Audience
+Primary Users
+
+Startup founders
+
+want automation, lead generation, marketing ops
+
+Small businesses / agencies
+
+need automation systems (n8n/Make/Zapier)
+
+Hiring managers / recruiters
+
+need quick skill/project clarity
+
+Secondary Users
+
+Students/builders browsing for inspiration
+
+Potential collaborators
+
+7) User Stories
+Core User Stories
+
+As a visitor, I want to ask “what do you do?” and get a clear reply.
+
+As a recruiter, I want to view skills quickly.
+
+As a founder, I want to see projects that prove value.
+
+As a client, I want to contact Akhtar instantly without hunting.
+
+Supporting User Stories
+
+As a visitor, I want suggested questions so I don’t have to think.
+
+As a visitor, I want the site to feel smooth & modern.
+
+8) UX Principles
+
+These rules must guide all UI decisions:
+
+Minimal (no clutter)
+
+High contrast (readable)
+
+Premium motion (smooth, not flashy)
+
+Chat-first (AI is central interaction)
+
+1-tap navigation (Me/Projects/Skills/Contact always visible)
+
+9) Information Architecture
+Pages / Routes
+
+/ → Home / Chat
+
+/me → About page
+
+/projects → Projects page
+
+/skills → Skills page
+
+/contact → Contact page
+
+Global UI Components
+
+Bottom navigation row (persistent):
+
+Me | Projects | Skills | Contact | 3-dot menu
+
+Chat input (persistent on most pages)
+
+Profile avatar (most prominent on Home)
+
+10) Screen Requirements (Based on UI screenshots)
+
+These specs must follow the attached screenshots.
+
+10.1 Home Page / Main Chat Hub
+
+Primary Purpose: Start chat + navigation into portfolio
+
+Content
+
+Headline: “Hey, i am Akhtar”
+
+Tagline: “I cooked Automations”
+
+Profile Avatar: circular image
+
+Chat input:
+
+placeholder: “Ask me anything….”
+
+4 glass buttons: Me, Projects, Skill, Contact
+
+3-dot icon: opens common questions menu
+
+Layout requirements
+
+Vertical center alignment (hero)
+
+Buttons in grid (2x2)
+
+Input centered below avatar
+
+Clean gradient background
+
+Interactions
+
+Enter key sends message
+
+Send icon sends message
+
+On send:
+
+user message appears
+
+AI typing indicator shows (loading page style)
+
+AI response renders
+
+10.2 Me Page (About)
+
+Purpose: Provide quick “who is Akhtar” summary.
+
+Content must include
+
+Name: Md Akhtar
+
+Location: Kolkata, West Bengal, India
+
+Introduction paragraph (provided):
+
+“I help businesses run themselves...”
+
+Tags/chips:
+
+AI Automation
+
+AI
+
+Storytelling
+
+Lead Generation
+
+Python
+
+Sales
+
+Interaction
+
+Chat still accessible
+
+Must be scrollable
+
+Clean reading experience
+
+10.3 Projects Page
+
+Purpose: Prove capability through structured projects.
+
+Project display pattern
+
+Carousel + arrows OR horizontal slide with snap.
+
+Each project includes:
+
+Title (editable)
+
+Category (editable)
+
+Description (editable)
+
+Image grid: 4 images
+
+Optional: buttons (Demo / Case Study / GitHub)
+
+MVP Example Project
+
+Title: AI Research Agent: Chat for Instant Market & Competitor Analysis
+
+Category: Automation
+
+Description: from your provided copy
+
+Images: 4 placeholders
+
+10.4 Skills Page
+
+Purpose: Show expertise fast.
+
+Structure
+
+Headline: Skills & Expertise
+
+Category: AI and Automation
+
+Chips:
+
+Sales
+
+Lead Generation
+
+AI
+
+Automations
+
+AI Automations
+
+10.5 Contact Page
+
+Purpose: conversion page.
+
+Contact items (clickable)
+
+Email: mailto
+
+Phone: tel
+
+Location: text
+
+Social icons:
+
+LinkedIn
+
+Instagram
+
+Facebook
+
+UX rule
+
+No long forms in MVP. Clicking contact should be easy.
+
+10.6 Loading / Suggestion UI
+
+Purpose: make AI feel alive.
+
+Behavior
+
+When AI is thinking:
+
+show suggestion pills like:
+“What are your projects?”
+“What are you working on right now?”
+
+show animated loading / typing indicator
+
+11) Chatbot Product Requirements
+11.1 AI Twin Definition
+
+The AI is not a generic assistant.
+It is Akhtar AI Twin, representing Akhtar.
+
+AI role
+
+Explain Akhtar’s skills/projects/services
+
+Help visitor navigate portfolio
+
+Encourage contact booking if relevant
+
+11.2 Personality & Tone Requirements
+Communication vibe
+
+Coffee-chat friendly
+
+Business casual
+
+confident and concise
+
+Behavior rules
+
+Must respond quickly (perceived)
+
+Avoid huge essays unless user asks for depth
+
+Ask 1 follow-up question if visitor intent is unclear
+
+Encourage conversion naturally (“Want to reach out?”)
+
+11.3 AI Identity Facts (Truth Source)
+
+The AI must consistently use these truths:
+
+Professional identity
+
+What do you do?
+I build smart AI automations that save teams hours and scale businesses without extra hires.
+
+Superpower skills:
+Test Automation, Marketing, Sales, AI Automation, Lead Generation, Storytelling
+
+Biggest flex:
+I’ve led a team that successfully implemented AI strategies to boost marketing campaign efficiency.
+
+Personal side
+
+What drives you?
+I make your tools work together so you can stop working for your tools.
+
+Outside work:
+tech exploration, AI workshops, networking
+
+Unique:
+I make businesses run themselves.
+
+Personal touch
+From your paragraph:
+
+self-taught
+
+night owl
+
+coffee enthusiast
+
+likes painting + marketing learning
+
+chess + cricket
+
+async communication
+
+pair programming
+
+clean maintainable solutions
+
+11.4 AI Guardrails
+
+To prevent nonsense or reputation damage:
+
+If asked unrelated personal info: politely redirect
+
+Never claim fake companies/jobs
+
+Never invent projects not listed
+
+If unsure, respond:
+
+“I don’t want to guess — but here’s what I can share…”
+
+12) Common Questions Menu (3-dot system)
+Requirements
+
+3-dot icon always visible in nav bar
+
+On click: open dropdown / modal with categories
+
+Each question is clickable
+
+Clicking question:
+
+inserts into chat input
+
+auto-sends (optional toggle)
+
+scrolls chat view to newest message
+
+FAQ Categories & Questions
+
+About Me
+
+Who are you?
+
+What are your passions?
+
+Professional
+
+Do you have previous work?
+
+Why should I hire you?
+
+Projects
+
+What projects are you most proud of?
+
+Skills
+
+What are your skills?
+
+Fun & Personal
+
+What’s the craziest thing you’ve ever done?
+
+Contact
+
+How can I reach you?
+
+13) Component Requirements
+13.1 Navigation Component
+
+fixed bottom row
+
+active tab highlighting
+
+smooth transition between routes
+
+13.2 Chat Component
+
+Chat transcript list:
+
+user bubble
+
+assistant bubble
+
+timestamp optional
+
+autoscroll down
+
+13.3 Suggestion Pills
+
+appear during typing state
+
+clickable to send
+
+14) Splash Cursor (Fluid Cursor Animation)
+Requirement
+
+Integrate SplashCursor WebGL component globally.
+
+Implementation Notes
+
+Must be overlay canvas full-screen
+
+Must not block interactions:
+
+pointer-events: none
+
+z-index above background, below UI? (or above all, since pointer events none)
+
+must run smoothly on desktop
+
+degrade gracefully on low-end devices
+
+Reference code file: SplashCursor component 
+
+splash cursor code
+
+15) Content Requirements (Copy source)
+Homepage Copy
+
+Headline: Hey, i am Akhtar
+
+Tagline: I cooked Automations
+
+Placeholder: Ask me anything….
+
+About Copy
+
+Use provided introduction paragraph.
+
+Projects Copy
+
+Project content must be editable.
+
+16) Data Model Requirements
+16.1 Config First Approach (MVP)
+
+All portfolio content must live in a single config object (JSON/TS object):
+
+profile
+
+nav
+
+projects
+
+skills
+
+contacts
+
+faq prompts
+
+AI system prompt (optional)
+
+This makes it “future-addable” without code rewrites.
+
+16.2 Suggested Data Models
+Profile
+type Profile = {
+  name: string;
+  headline: string;
+  tagline: string;
+  location: string;
+  avatarUrl: string;
+};
+
+Skills
+type SkillsGroup = {
+  group: string;
+  skills: string[];
+};
+
+Project
+type Project = {
+  id: string;
+  title: string;
+  category: string;
+  description: string;
+  images: string[]; // exactly 4
+  links?: { demo?: string; caseStudy?: string; github?: string };
+};
+
+FAQ Prompt
+type FAQCategory = {
+  title: string;
+  questions: string[];
+};
+
+Contact
+type Contact = {
+  email: string;
+  phone: string;
+  location: string;
+  socials: {
+    linkedin?: string;
+    instagram?: string;
+    facebook?: string;
+  };
+};
+
+17) API Requirements (Gemini / Groq)
+Key requirement
+
+User said: no OpenAI, use Gemini or Groq.
+So system must support either provider.
+
+Chat API Behavior
+
+Frontend sends:
+
+user message
+
+conversation history (last N messages)
+
+“system prompt” (AI twin personality + truth)
+
+Backend returns:
+
+assistant message
+
+optional tool fields (future)
+
+Response Streaming
+
+MVP should attempt streaming if supported by provider for premium feel.
+
+18) Functional Requirements
+MVP (Must-have)
+
+✅ All pages route correctly
+✅ Chat works with Gemini/Groq
+✅ FAQ menu works
+✅ Projects editable via config
+✅ Cursor animation integrated
+✅ Responsive UI
+
+Post-MVP (Nice-to-have)
+
+contact capture in chat:
+“Want me to send examples? Drop your email.”
+
+analytics event tracking
+
+shareable portfolio link with query params
+
+19) Non-functional Requirements
+Performance
+
+no heavy images uncompressed
+
+lazy load project images
+
+keep shaders/canvas optimized
+
+Accessibility
+
+keyboard navigation
+
+focus states
+
+readable contrast
+
+Reliability
+
+AI error fallback:
+
+friendly error message
+
+suggestion to retry
+
+20) Acceptance Criteria
+
+The build is “Done” only if:
+
+UI Acceptance
+
+Matches screenshot patterns:
+
+liquid glass tiles
+
+clean minimal layout
+
+centered hero
+
+pill chat input
+
+suggestions on loading
+
+Interaction Acceptance
+
+Chat sends/receives messages
+
+Enter sends message
+
+FAQ prompts clickable
+
+nav always accessible
+
+Tech Acceptance
+
+Gemini/Groq chat integrated
+
+SplashCursor integrated without blocking UI
+
+21) Risks + Mitigation
+Risk: AI hallucination / inventing details
+
+Mitigation:
+
+hard truth source config
+
+“don’t guess” rule
+
+Risk: WebGL performance issues
+
+Mitigation:
+
+disable on mobile low-end
+
+fallback static cursor effect
+
+Risk: Too much animation = distracting
+
+Mitigation:
+
+keep cursor subtle
+
+reduce intensity and alpha
+
+22) MVP Delivery Plan
+Phase 1 — UI Skeleton (Day 1)
+
+routing
+
+nav
+
+page layouts
+
+config objects
+
+Phase 2 — Chat System (Day 2)
+
+chat UI
+
+backend route
+
+gemini/groq integration
+
+Phase 3 — Premium UI (Day 3)
+
+liquid glass
+
+transitions
+
+SplashCursor integration 
+
+splash cursor code
+
+Phase 4 — Polish (Day 4)
+
+responsive
+
+performance
+
+content tuning
+
+deploy
+
+23) Final Notes (Important)
+
+This portfolio must feel:
+
+modern
+
+premium
+
+simple
+
+fast
+
+chat-first
+
+If it starts feeling like a normal portfolio website → we failed.

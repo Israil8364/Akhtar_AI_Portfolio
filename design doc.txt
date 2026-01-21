@@ -1,0 +1,726 @@
+DESIGN DOCUMENT — “Akhtar AI Twin Portfolio”
+
+Design Reference: Toukoum-style portfolio (your screenshots)
+Goal: pixel-close clean minimal UI with liquid glass & chat-first layout
+Priority: UI must match reference images
+
+1) Visual Identity
+1.1 Design Vibe
+
+Keywords:
+
+Clean
+
+Minimal
+
+Premium
+
+Glassy
+
+Soft gradients
+
+High whitespace
+
+Smooth motion
+
+Chat-first
+
+The design should feel like:
+
+“a futuristic personal assistant UI”
+NOT:
+“a normal portfolio website”
+
+2) Layout System
+2.1 Primary Layout Rules
+
+Everything is centered
+
+Main content uses vertical stacking
+
+High whitespace
+
+No heavy borders
+
+Soft shadows only
+
+Rounded corners everywhere (2xl / 3xl)
+
+2.2 Page Max Width
+
+For desktop:
+
+container max width: 1200px
+
+content safe width: 900px
+
+center everything
+
+For mobile:
+
+full width
+
+padding left/right: 16px
+
+avoid overflow
+
+3) Background System (MOST IMPORTANT)
+
+Your screenshots show a background that is not plain white. It is:
+
+a smooth gradient
+
+with subtle noise (optional)
+
+with blur depth
+
+3.1 Base Background
+
+Use a full-page background with:
+
+gradient blobs
+
+slight blur
+
+Implementation spec:
+
+A div behind everything:
+
+fixed position
+
+inset-0
+
+z-index: -1
+
+pointer-events none
+
+3.2 Gradient Style (Reference Match)
+
+Use 2–3 radial gradients:
+
+Top left blob: purple/blue
+
+Center blob: pink/violet
+
+Bottom right: teal/blue
+
+Opacity low — should not distract.
+
+3.3 Optional: Noise Overlay
+
+Add subtle noise texture:
+
+opacity: 0.05 to 0.12
+
+blend mode: overlay
+
+This makes it premium.
+
+4) Typography System
+4.1 Font Choice
+
+To match modern minimal UI, choose:
+
+✅ Inter (recommended)
+OR
+✅ Satoshi (more stylish)
+OR
+✅ Plus Jakarta Sans (clean premium)
+
+(Inter is safest.)
+
+4.2 Typography Scale
+
+Use clear hierarchy:
+
+Hero headline (Home)
+
+font-size: 42–56px (desktop)
+
+font-size: 32–40px (mobile)
+
+font-weight: 600–700
+
+line-height: 1.0–1.1
+
+tracking: -0.02em
+
+Tagline / subtext
+
+font-size: 18–22px
+
+opacity: 0.75
+
+font-weight: 400–500
+
+Section headings (Skills/Projects)
+
+font-size: 26–32px
+
+font-weight: 600
+
+Body
+
+font-size: 14–16px
+
+line-height: 1.6
+
+5) Color System
+5.1 Global Palette
+
+Your UI is neutral + gradient.
+
+Text colors
+
+Primary text: near-black (not pure)
+
+Secondary text: muted grey (opacity 0.75)
+
+UI surfaces
+
+Cards and buttons: glass white with blur
+
+5.2 Glass Surface Colors
+
+background: rgba(255,255,255,0.08–0.20)
+
+border: rgba(255,255,255,0.20–0.30)
+
+shadow: soft black shadow w low opacity
+
+5.3 Accent Colors
+
+Only used in:
+
+hover glow
+
+cursor splash effect
+
+subtle highlights
+
+No heavy solid accent UI.
+
+6) Component Design Specs
+6.1 Avatar Component (Circle Photo)
+Description
+
+Center avatar like in reference:
+
+circular
+
+slightly large
+
+subtle inner shadow
+
+border for glass look
+
+Size
+
+Desktop: 160–190px
+
+Mobile: 120–150px
+
+Style
+
+round-full
+
+border: 2px translucent
+
+shadow: medium soft
+
+Optional: small “glow aura” behind avatar:
+
+gradient ring or soft blur halo
+
+6.2 Chat Input (Pill input, exact reference)
+Visual Requirements
+
+Chat input in your screenshot:
+
+pill shape
+
+semi-transparent glass
+
+subtle border
+
+placeholder in light grey
+
+send arrow icon on right
+
+shadow light
+
+sits below avatar
+
+Dimensions
+
+height: 52–60px
+
+desktop width: 520–650px
+
+mobile width: 100%
+
+Style Rules
+
+rounded-full
+
+glass background
+
+blur
+
+border: 1px
+
+Placeholder
+
+Text: “Ask me anything….”
+Style:
+
+opacity 0.65
+
+Send Icon
+
+circle button OR plain icon
+
+should be aligned center right
+
+hover: increase brightness + slight scale
+
+Interaction
+
+focus: brighter border + soft glow ring
+
+typing: subtle highlight
+
+6.3 Liquid Glass Buttons (MOST IMPORTANT)
+
+These are the 4 square buttons (Me/Projects/Skill/Contact)
+
+Design Requirements
+
+square tile
+
+glassmorphism
+
+smooth hover
+
+premium click feel
+
+Size
+
+Desktop: 110–130px square
+
+Mobile: 90–110px square
+
+Layout
+
+Grid 2x2:
+
+[ Me      Projects ]
+[ Skills  Contact  ]
+
+
+Spacing:
+
+gap: 14–18px
+
+Button style
+
+rounded-2xl
+
+background: glass (rgba white 0.12–0.18)
+
+blur: 12–16px
+
+border: 1px translucent
+
+shadow: soft
+
+Hover style
+
+background slightly stronger
+
+border brighter
+
+slight lift (translateY -2)
+
+subtle scale (1.02)
+
+Active click
+
+compress (scale 0.98)
+
+reduce shadow
+
+Label typography
+
+font-size: 14–16px
+
+font-weight: 500–600
+
+centered
+
+Icons (Optional)
+
+Your screenshots appear text-only, keep text-only for exact match unless you want icons later.
+
+6.4 Bottom Navigation Bar (Persistent)
+Matches reference
+
+At bottom:
+
+minimal bar
+
+4 nav items + 3-dot menu
+
+like a floating glass bar
+
+Style
+
+position fixed bottom
+
+centered horizontally
+
+width: fit-content OR 90% on mobile
+
+pill bar
+
+glass background
+
+blur
+
+border
+
+Items
+
+Me
+
+Projects
+
+Skills
+
+Contact
+
+3-dot icon
+
+Active item
+
+brighter text
+
+small underline OR pill highlight
+
+subtle glow
+
+Interaction
+
+smooth slide for active indicator
+
+6.5 3-dot Menu (Quick Questions)
+Trigger
+
+Top-right OR bottom nav last icon — according to reference, bottom nav last icon.
+
+UI pattern
+
+dropdown popup OR bottom sheet on mobile
+
+Required design
+
+glass surface
+
+rounded-2xl
+
+slight blur
+
+text list
+
+section headers
+
+Categories
+
+About Me
+
+Professional
+
+Projects
+
+Skills
+
+Fun & Personal
+
+Contact
+
+List items
+
+Each item is clickable
+
+hover highlight glass
+
+click sends the question
+
+6.6 Chat Messages UI
+
+Even if your screenshot doesn’t show full chat transcript heavily, implement it clean:
+
+Layout
+
+centered chat column
+
+message bubbles with max width
+
+spacing between messages: 10–14px
+
+User bubble
+
+right aligned
+
+slightly darker glass OR solid semi
+
+rounded-2xl
+
+padding 12–14px
+
+Assistant bubble
+
+left aligned
+
+light glass
+
+blur
+
+subtle border
+
+Typing state
+
+animated dots
+
+plus suggestion pills (see next component)
+
+6.7 Suggestion Pills (Loading page reference)
+Behavior
+
+When AI is typing:
+
+show 1–2 suggestion questions in pill buttons
+
+Style
+
+rounded-full
+
+glass
+
+border
+
+padding 10–12px horizontal
+
+hover: lighten
+
+Example:
+
+“What are your projects?”
+
+“What are you working on right now?”
+
+6.8 Page Cards (About/Skills/Contact)
+
+On pages like About, Skills, Contact, your screenshots show:
+
+content inside a glass card
+
+minimal elements
+
+Card Style
+
+rounded-3xl
+
+glass background
+
+blur
+
+border: 1px
+
+padding:
+
+desktop: 28–40px
+
+mobile: 20–26px
+
+Internal spacing
+
+Heading -> 12px
+
+Section spacing -> 20px
+
+Tag chips -> 10px gap
+
+6.9 Tag Chips (Skills tags)
+Style
+
+small pill
+
+light glass
+
+border
+
+typography 12–14px
+
+hover: lighten
+
+Spacing:
+
+flex wrap
+
+gap 8–10px
+
+6.10 Project Carousel UI
+Structure
+
+Glass card container
+
+project title + category
+
+description
+
+image grid 2x2 (4 images)
+
+left/right arrows
+
+Image grid
+
+2 columns
+
+2 rows
+
+gap: 10px
+
+images rounded-xl
+
+Arrows
+
+circle glass buttons
+
+left and right aligned mid height
+
+7) Animation & Motion Design
+7.1 Global Motion Rules
+
+everything transitions smoothly
+
+keep durations short
+
+avoid “bouncy” motion
+
+Timing
+
+hover transitions: 200ms
+
+page transitions: 300–450ms
+
+easing: ease-out / cubic-bezier(0.2,0.8,0.2,1)
+
+Animations required
+
+Button hover lift
+
+page fade/slide transitions
+
+chat typing animation
+
+splash cursor effect (from your code)
+
+8) Cursor Animation — SplashCursor Integration
+
+This must match reference vibe: smooth, premium, subtle.
+
+Rules
+
+Cursor should not dominate
+
+Reduce intensity for minimal theme
+
+Must not lag
+
+Placement
+
+global overlay
+
+should appear on every page
+
+Implementation Specs
+
+WebGL canvas
+
+pointer-events: none
+
+fixed inset-0
+
+z-index: 1
+
+app UI: z-index > 2
+
+9) Responsive Rules
+Desktop
+
+hero content vertically centered
+
+2x2 button grid aligned
+
+Mobile
+
+keep avatar smaller
+
+buttons still 2x2 but bigger tap area
+
+nav bar full width (90%)
+
+Minimum tap sizes
+
+nav items: 44px
+
+glass tiles: minimum 88px
+
+10) Design Consistency Checklist (Must be enforced)
+
+If you want exact match, follow these:
+
+✅ No heavy borders
+✅ No bright solid colors
+✅ No sharp corners
+✅ No excessive gradients inside cards
+✅ No default browser blue focus outlines (replace with glow ring)
+✅ Everything must look “soft”
+
+11) Implementation Notes for Antigravity Vibe Coder
+Layout skeleton
+
+BackgroundLayer component
+
+SplashCursor global component
+
+AppShell with:
+
+page content slot
+
+bottom nav slot
+
+chat input slot
+
+Pages use same structure
+
+each page is a centered glass card
+
+persistent bottom nav
+
+persistent chat input
+
+12) Deliverables from this Design Doc
+
+This design doc defines:
+
+exact visual system
+
+component specs
+
+interactions
+
+responsiveness
+
+motion system

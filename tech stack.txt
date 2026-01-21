@@ -1,0 +1,620 @@
+TECH DOCUMENT — AI Portfolio Website “Akhtar AI Twin”
+
+Version: 1.0
+Status: Ready for development
+Build target: Antigravity Vibe Coder
+AI providers supported: Gemini + Groq
+Key UI tech requirement: SplashCursor WebGL overlay (ReactBits code)
+Primary concern: premium UI performance & reliability
+
+1) Technical Goals
+Primary Technical Goals
+
+Pixel-close UI reproduction of your screenshots
+
+Fast, responsive UI (no jank, no lag)
+
+Stable AI chat with guardrails
+
+Projects/Skills/FAQ are config-driven and easy to edit
+
+Simple deploy (no custom infra)
+
+Non-Goals
+
+No heavy backend
+
+No custom auth
+
+No database in MVP (optional later)
+
+No multi-tenancy
+
+No CMS initially
+
+2) Recommended Stack (MVP) — Best for You
+✅ Core Stack
+
+Next.js 14+ (App Router)
+
+TypeScript
+
+Tailwind CSS
+
+Framer Motion
+
+lucide-react (icons)
+
+shadcn/ui (optional, but nice)
+
+Gemini OR Groq for AI chat
+
+Vercel deployment
+
+This is the most optimal balance of:
+
+speed
+
+clean code
+
+future scalability
+
+easy UI motion
+
+3) Why This Stack Is Correct (No BS)
+3.1 Next.js App Router
+
+Because your app has:
+
+multiple pages
+
+SEO requirement (portfolio)
+
+fast performance requirement
+
+API endpoints requirement
+
+Next.js gives you:
+
+routing for Me/Projects/Skills/Contact
+
+server route handlers for AI chat
+
+easy deploy on Vercel
+
+image optimization
+
+3.2 TypeScript (NOT JavaScript)
+
+This app has data models:
+
+projects
+
+skills
+
+FAQ
+
+AI personality
+
+With JS you’ll break stuff easily and won’t notice until runtime.
+
+TypeScript prevents:
+
+missing config fields
+
+wrong data types
+
+undefined crashes
+
+3.3 Tailwind CSS (NOT full custom CSS)
+
+You need:
+
+spacing consistency
+
+glass effects
+
+responsive design
+
+fast iteration
+
+Tailwind makes UI consistent and quick.
+Custom CSS alone becomes spaghetti.
+
+Correct approach:
+
+Tailwind for 90%
+
+globals.css for special effects:
+
+liquid glass
+
+background gradients
+
+noise overlay
+
+3.4 Framer Motion
+
+Your UI success depends on motion.
+Framer motion is:
+
+stable
+
+easy transitions
+
+premium feel
+
+Without it, UI will look “dead”.
+
+4) AI Provider Architecture (Gemini vs Groq)
+
+You said you can’t pay OpenAI. Good.
+
+Gemini vs Groq (Honest Comparison)
+✅ Gemini (Google)
+
+Pros
+
+Usually free/cheap tier
+
+Strong reasoning + general chat
+
+Easy API key
+
+Good for personal assistant vibe
+
+Cons
+
+Latency can be higher than Groq
+
+Streaming sometimes inconsistent depending on endpoint/version
+
+✅ Groq (Fast inference)
+
+Pros
+
+Insanely fast response times
+
+Great for “premium chat feel”
+
+Usually cheaper for speed
+
+Cons
+
+Model output quality depends on model selection
+
+Some models hallucinate more if not controlled
+
+My recommendation:
+
+If you want quality + personality → Gemini
+
+If you want speed + wow-effect → Groq
+
+For your portfolio:
+✅ Groq is the better user experience
+Because it makes your AI feel instant.
+
+5) System Architecture
+High-level Architecture
+
+Frontend (Next.js)
+→ sends chat messages
+→ backend route handler
+→ calls Gemini or Groq API
+→ streams response back
+→ UI updates chat messages
+
+Modules
+
+UI Layer:
+
+pages
+
+layout shell
+
+glass components
+
+Domain Layer:
+
+config models
+
+content definitions
+
+AI Layer:
+
+provider adapters (Gemini/Groq)
+
+prompt assembly
+
+message handling
+
+6) Folder Structure (Implementation-ready)
+
+Use this structure exactly:
+
+/app
+  /(site)
+    page.tsx                 # Home
+    me/page.tsx
+    projects/page.tsx
+    skills/page.tsx
+    contact/page.tsx
+  /api
+    /chat/route.ts           # unified AI endpoint
+  layout.tsx
+  globals.css
+
+/components
+  AppShell.tsx
+  BackgroundLayer.tsx
+  SplashCursor.tsx
+  Chat
+    ChatPanel.tsx
+    ChatInput.tsx
+    ChatMessage.tsx
+    SuggestionPills.tsx
+  Nav
+    BottomNav.tsx
+    NavItem.tsx
+    QuickMenu.tsx
+  UI
+    GlassCard.tsx
+    GlassButton.tsx
+    Chip.tsx
+
+/config
+  profile.ts
+  projects.ts
+  skills.ts
+  faq.ts
+  ai.ts
+
+/lib
+  ai
+    index.ts                 # chooses provider
+    gemini.ts
+    groq.ts
+    prompts.ts               # system prompt builder
+  utils.ts
+  constants.ts
+  validators.ts
+
+
+This structure prevents:
+
+messy code
+
+duplicated config
+
+hard to update content
+
+7) Content Management Strategy (MVP)
+Config-driven content
+
+Everything should live in /config.
+
+Why?
+
+You can edit text without touching UI code
+
+You can add projects later easily
+
+Antigravity coder can auto-build pages off config
+
+Example config modules:
+
+profile.ts (headline, tagline, avatar)
+
+projects.ts (array of projects)
+
+skills.ts (skills groups)
+
+faq.ts (menu questions)
+
+ai.ts (AI personality)
+
+8) API Design
+8.1 Chat Endpoint (Single endpoint)
+
+POST /api/chat
+
+Request payload
+{
+  "messages": [
+    {"role": "user", "content": "Who are you?"}
+  ],
+  "pageContext": "home"
+}
+
+Response payload
+{
+  "id": "msg_xxx",
+  "role": "assistant",
+  "content": "Hey! I’m Akhtar..."
+}
+
+8.2 Streaming
+
+Preferred response:
+
+text/event-stream or incremental chunks
+
+Benefits:
+
+feels premium
+
+hides model latency
+
+makes AI feel alive
+
+9) AI Prompt Engineering (Critical)
+
+Your AI must not act like a generic chatbot.
+
+Prompt Composition
+
+We create prompt in 3 layers:
+
+Layer 1: System Identity Prompt
+
+defines role: “Akhtar AI twin”
+
+defines tone
+
+defines truth source
+
+defines “don’t hallucinate” rules
+
+Layer 2: Knowledge Prompt (Portfolio facts)
+
+Inject:
+
+intro paragraph
+
+skills list
+
+projects list
+
+contact info
+
+Layer 3: Behavioral Guardrails
+
+avoid fabricating
+
+redirect irrelevant personal questions
+
+keep replies concise unless asked
+
+Why this matters
+
+Without guardrails:
+
+AI will invent fake experience
+
+portfolio credibility dies instantly
+
+10) State Management
+✅ Use simple state
+
+No Redux. No Zustand needed.
+
+Use:
+
+React useState + useReducer
+
+useEffect for scroll
+
+store chat messages in component state
+
+Why:
+
+Simple, less bug surface
+
+portfolio doesn’t need global complex state
+
+11) UI Implementation Strategy
+11.1 Glassmorphism Styles
+
+You will implement glass in two ways:
+
+Tailwind utilities
+
+a .glass CSS class in globals.css
+
+Example CSS
+
+blur
+
+border
+
+soft shadow
+
+11.2 Reusable Components
+
+You must create these building blocks:
+
+GlassCard
+
+Used in: about, skills, contact pages.
+
+GlassButton
+
+Used for: 4 square buttons + arrows.
+
+Chip
+
+Used for: skill tags.
+
+BottomNav
+
+Persistent navigation.
+
+12) Splash Cursor Technical Notes
+
+You already have cursor code file 
+
+splash cursor code
+
+Performance risks:
+
+WebGL + React re-renders = lag.
+
+Correct integration
+
+render <SplashCursor /> only once at app root
+
+no re-renders
+
+should be client component
+
+pointer-events: none
+
+position: fixed
+
+Degradation strategy
+
+On mobile:
+
+optionally disable cursor effect (recommended)
+
+because mobile doesn't need cursor visuals
+
+13) Deployment & Hosting
+Recommended Hosting
+
+✅ Vercel
+
+native Next.js support
+
+easiest env vars
+
+fast CDN
+
+Environment variables
+
+GEMINI_API_KEY
+
+GROQ_API_KEY
+
+AI_PROVIDER=gemini|groq
+
+Security note
+
+Never expose API keys in frontend.
+All calls go through /api/chat.
+
+14) Observability & Analytics (Optional but Smart)
+
+For MVP:
+
+simple console logging
+
+Post MVP:
+
+Plausible or Vercel analytics
+
+track:
+
+chat opened
+
+question clicked from quick menu
+
+contact button clicks
+
+This helps improve conversion.
+
+15) Performance Targets
+Frontend Performance
+
+Lighthouse performance > 90
+
+load time < 2s
+
+minimal JS bundle
+
+Optimizations
+
+dynamic imports for heavy components
+
+lazy load project images
+
+minimize animation triggers
+
+16) Security Considerations
+
+This is a portfolio, but still:
+
+Rate limiting
+
+Prevent abuse of chat endpoint.
+
+Options:
+
+Vercel Edge middleware rate limit
+
+Upstash Redis rate limit
+
+or simple IP-based memory cache (MVP)
+
+Input Sanitization
+
+Prevent prompt injection:
+
+strip huge messages
+
+cap tokens / length
+
+restrict tool usage (not needed here)
+
+17) Future Scalability (V2 Plan)
+
+When you grow:
+
+Move config content to CMS:
+
+Sanity / Notion / Strapi
+
+Add vector retrieval (RAG):
+
+store resume/projects in Supabase vector
+
+AI answers based on documents
+
+But do NOT do now.
+
+18) Final Tech Stack Summary (Decision)
+✅ MVP Stack
+
+Next.js 14 (App Router)
+
+TypeScript
+
+TailwindCSS
+
+Framer Motion
+
+Gemini OR Groq chat
+
+Vercel deploy
+
+Config-driven content modules
+
+SplashCursor WebGL overlay
+
+✅ Provider recommendation
+
+Groq for speed, premium feel
+Gemini as fallback.
+
+19) What you should NOT do (direct advice)
+
+If you want this to succeed:
+
+❌ Don’t build separate backend
+❌ Don’t waste time on DB early
+❌ Don’t implement CMS now
+❌ Don’t do fancy RAG now
+❌ Don’t write custom CSS for everything
+
+Build the UI + chat fast, ship, then improve.
