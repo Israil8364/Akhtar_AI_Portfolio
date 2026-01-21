@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { profile } from "@/config/profile";
 import { ChatPanel } from "@/components/Chat/ChatPanel";
@@ -11,6 +11,11 @@ import { User, Briefcase, Lightbulb, Mail, ArrowLeft, ArrowRight } from "lucide-
 export default function HomePage() {
     const router = useRouter();
     const [isChatting, setIsChatting] = useState(false);
+    const [isClient, setIsClient] = useState(false);
+
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
 
     return (
         <div className="min-h-screen flex flex-col items-center justify-center p-4 md:p-8 relative overflow-hidden bg-white">
@@ -22,8 +27,9 @@ export default function HomePage() {
             </div>
 
             <main className="w-full max-w-[900px] z-10 flex flex-col items-center">
-                <AnimatePresence mode="wait">
-                    {!isChatting ? (
+                {isClient && (
+                    <AnimatePresence mode="wait">
+                        {!isChatting ? (
                         <motion.div
                             key="hero"
                             initial={{ opacity: 0, y: 30 }}
@@ -151,7 +157,8 @@ export default function HomePage() {
                             </div>
                         </motion.div>
                     )}
-                </AnimatePresence>
+                    </AnimatePresence>
+                )}
             </main>
 
             {/* Subtle Background Watermark - Opacity 0.04, behind everything, centered */}
