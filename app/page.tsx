@@ -6,7 +6,7 @@ import { profile } from "@/config/profile";
 import { ChatPanel } from "@/components/Chat/ChatPanel";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { User, Briefcase, Lightbulb, Mail, ArrowLeft } from "lucide-react";
+import { User, Briefcase, Lightbulb, Mail, ArrowLeft, ArrowRight } from "lucide-react";
 
 export default function HomePage() {
     const router = useRouter();
@@ -63,10 +63,16 @@ export default function HomePage() {
                             {/* Avatar → Search Bar: 22–28px spacing (using 24px) */}
                             <div style={{ height: '24px' }} />
 
-                            {/* 4. Search Bar: Fixed width, rounded pill, subtle shadow */}
-                            <div className="w-full flex justify-center px-4" onClick={() => setIsChatting(true)}>
-                                <div className="w-full max-w-[560px] bg-white/50 backdrop-blur-xl rounded-full px-8 py-4 flex items-center border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_4px_25px_rgba(0,0,0,0.06)] hover:bg-white/80 transition-all cursor-text text-left">
+                            {/* 4. Search Bar: Fixed width, rounded pill, subtle shadow with send button */}
+                            <div className="w-full flex justify-center px-4">
+                                <div className="w-full max-w-[560px] bg-white/50 backdrop-blur-xl rounded-full px-8 py-4 flex items-center justify-between border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_4px_25px_rgba(0,0,0,0.06)] hover:bg-white/80 transition-all cursor-text text-left" onClick={() => setIsChatting(true)}>
                                     <span className="text-black/30 text-base md:text-lg font-medium">Ask me anything...</span>
+                                    <button 
+                                        onClick={() => setIsChatting(true)}
+                                        className="ml-4 bg-black/70 hover:bg-black/85 rounded-full p-2.5 flex items-center justify-center transition-all"
+                                    >
+                                        <ArrowRight className="w-5 h-5 text-white" />
+                                    </button>
                                 </div>
                             </div>
 
